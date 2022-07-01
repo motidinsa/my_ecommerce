@@ -2,15 +2,16 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   bool isPasswordVisible = false;
+  bool isConfirmPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,11 @@ class _LoginState extends State<Login> {
           physics: const BouncingScrollPhysics(),
           children: [
             const SizedBox(
-              height: 200,
+              height: 100,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Welcome!',
+                  'Create an account',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 35,
@@ -46,12 +47,35 @@ class _LoginState extends State<Login> {
                 ),
               ),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              // margin: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Login',
+                    'Sign up',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const TextField(
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.person_outline_rounded),
+                      labelText: 'First Name',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const TextField(
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.person_outline_rounded),
+                      labelText: 'Last Name',
+                    ),
                   ),
                   const SizedBox(
                     height: 15,
@@ -62,6 +86,17 @@ class _LoginState extends State<Login> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email_outlined),
                       labelText: 'Email',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const TextField(
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.phone_outlined),
+                      labelText: 'Phone (Optional)',
                     ),
                   ),
                   const SizedBox(
@@ -87,14 +122,33 @@ class _LoginState extends State<Login> {
                       labelText: 'Password',
                     ),
                   ),
-                  // SizedBox(height: 10,),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Forgot password?',
-                        style:
-                            TextStyle(color: Color(0xff5956E9), fontSize: 15),
-                      )),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    obscureText: isConfirmPasswordVisible ? false : true,
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      prefixIcon: const Icon(Icons.lock_outline_rounded),
+                      suffixIcon: IconButton(
+                        icon: isConfirmPasswordVisible
+                            ? const Icon(Icons.visibility_off_rounded)
+                            : const Icon(Icons.visibility),
+                        onPressed: () {
+                          setState(
+                            () {
+                              isConfirmPasswordVisible =
+                                  !isConfirmPasswordVisible;
+                            },
+                          );
+                        },
+                      ),
+                      labelText: 'Confirm Password',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
@@ -103,7 +157,7 @@ class _LoginState extends State<Login> {
                           padding: const EdgeInsets.symmetric(vertical: 15)),
                       onPressed: () {},
                       child: const Text(
-                        'Login',
+                        'Sign up',
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
@@ -111,7 +165,6 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 20,
                   ),
-
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
@@ -122,7 +175,7 @@ class _LoginState extends State<Login> {
                             color: Color(0xff5956E9)),
                         Expanded(
                             child: Text(
-                          'Sign in with Google',
+                          'Sign up with Google',
                           textAlign: TextAlign.center,
                           style:
                               TextStyle(color: Color(0xff5956E9), fontSize: 16),
@@ -144,7 +197,7 @@ class _LoginState extends State<Login> {
                             color: Color(0xff5956E9)),
                         Expanded(
                             child: Text(
-                          'Sign in with Facebook',
+                          'Sign up with Facebook',
                           textAlign: TextAlign.center,
                           style:
                               TextStyle(color: Color(0xff5956E9), fontSize: 16),
@@ -159,7 +212,7 @@ class _LoginState extends State<Login> {
                   TextButton(
                     onPressed: () {},
                     child: const Text(
-                      'Create account',
+                      'Login',
                       style: TextStyle(color: Color(0xff5956E9), fontSize: 15),
                     ),
                   ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ecommerce/login/ui/login.dart';
+import 'package:my_ecommerce/signup/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const Scaffold(body: SafeArea(child: Login())),
+      home: const Scaffold(body: SafeArea(child: SignUp())),
     );
   }
 }
