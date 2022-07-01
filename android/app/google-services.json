@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "45845672371",
+    "project_id": "my-ecommerce-6f866",
+    "storage_bucket": "my-ecommerce-6f866.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45845672371:android:9214b0c92bc714ba3e1bc6",
+        "android_client_info": {
+          "package_name": "com.motidinsa.my_ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45845672371-cvkrss4v7tafqn9ipft4r23rgm4baku1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.motidinsa.my_ecommerce",
+            "certificate_hash": "8a377fa3061b26d013a598303578d51942fa13ff"
+          }
+        },
+        {
+          "client_id": "45845672371-mj5olc754ikvuvqdm1m15u89ubqsaur3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVdGYy8U-Xu9tJM--Cmjiepgn5acizvp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45845672371-mj5olc754ikvuvqdm1m15u89ubqsaur3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "45845672371-kn3c4f58gg15skvcqm6qvlcnlhdkr212.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.motidinsa.myEcommerce"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
