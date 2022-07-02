@@ -1,6 +1,13 @@
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:my_ecommerce/homepage/ui/homepage.dart';
+import 'package:my_ecommerce/signup/ui/verify_email.dart';
+
+import '../../authentication/authentication.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -11,6 +18,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool isPasswordVisible = false;
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +65,14 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                  TextField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email_outlined),
                       labelText: 'Email',
                     ),
+                    onChanged: (value) => email = value,
                   ),
                   const SizedBox(
                     height: 15,
@@ -86,6 +96,7 @@ class _LoginState extends State<Login> {
                       ),
                       labelText: 'Password',
                     ),
+                    onChanged: (value) => password = value,
                   ),
                   // SizedBox(height: 10,),
                   TextButton(
@@ -101,7 +112,16 @@ class _LoginState extends State<Login> {
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0xff5956E9),
                           padding: const EdgeInsets.symmetric(vertical: 15)),
-                      onPressed: () {},
+                      onPressed: () async {
+                        User? user =
+                            await Authentication.signIn(email, password);
+                        if (user != null && user.emailVerified == true) {
+                          Get.to(() => Homepage());
+                        } else if (user != null &&
+                            user.emailVerified == false) {
+                          Get.to(() => VerifyEmail());
+                        }
+                      },
                       child: const Text(
                         'Login',
                         style: TextStyle(fontSize: 16),

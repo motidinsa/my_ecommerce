@@ -1,6 +1,11 @@
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:my_ecommerce/authentication/authentication.dart';
+import 'package:my_ecommerce/signup/ui/verify_email.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -12,6 +17,12 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+  String firstName = '';
+  String lastName = '';
+  String email = '';
+  String phone = '';
+  String password = '';
+  String confirmPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -58,46 +69,50 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                  TextField(
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.person_outline_rounded),
                       labelText: 'First Name',
                     ),
+                    onChanged: (value) => firstName = value,
                   ),
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                  TextField(
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.person_outline_rounded),
                       labelText: 'Last Name',
                     ),
+                    onChanged: (value) => lastName = value,
                   ),
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                  TextField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email_outlined),
                       labelText: 'Email',
                     ),
+                    onChanged: (value) => email = value,
                   ),
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                  TextField(
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.phone_outlined),
                       labelText: 'Phone (Optional)',
                     ),
+                    onChanged: (value) => phone = value,
                   ),
                   const SizedBox(
                     height: 15,
@@ -121,6 +136,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       labelText: 'Password',
                     ),
+                    onChanged: (value) => password = value,
                   ),
                   const SizedBox(
                     height: 15,
@@ -145,6 +161,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       labelText: 'Confirm Password',
                     ),
+                    onChanged: (value) => confirmPassword = value,
                   ),
                   const SizedBox(
                     height: 15,
@@ -155,7 +172,13 @@ class _SignUpState extends State<SignUp> {
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0xff5956E9),
                           padding: const EdgeInsets.symmetric(vertical: 15)),
-                      onPressed: () {},
+                      onPressed: () async {
+                        User? user =
+                            await Authentication.signUp(email, password);
+                        if (user != null) {
+                          Get.to(() => VerifyEmail());
+                        }
+                      },
                       child: const Text(
                         'Sign up',
                         style: TextStyle(fontSize: 16),

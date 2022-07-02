@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:my_ecommerce/signup/signup.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:my_ecommerce/login/ui/login.dart';
 
 import 'firebase_options.dart';
 
@@ -15,13 +16,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'My E-Commerce',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const Scaffold(body: SafeArea(child: SignUp())),
+      home: const Scaffold(body: SafeArea(child: Login())),
     );
   }
 }
