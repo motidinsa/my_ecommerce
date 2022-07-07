@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:my_ecommerce/homepage/ui/homepage.dart';
 import 'package:my_ecommerce/signup/ui/verify_email.dart';
 
@@ -67,7 +66,7 @@ class _LoginState extends State<Login> {
                   ),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email_outlined),
                       labelText: 'Email',
@@ -113,13 +112,19 @@ class _LoginState extends State<Login> {
                           primary: const Color(0xff5956E9),
                           padding: const EdgeInsets.symmetric(vertical: 15)),
                       onPressed: () async {
+                        // await FirebaseFirestore.instance.collection('users').doc('4398JKY6vKRgqUcGhv0uGNGve5m2').set({
+                        //   'name': 'yoyyo',
+                        //   'age': 24,
+                        // })
+                        //     .then((value) => print("User Added"))
+                        //     .catchError((error) => print("Failed to add user: $error"));
                         User? user =
                             await Authentication.signIn(email, password);
                         if (user != null && user.emailVerified == true) {
-                          Get.to(() => Homepage());
+                          Get.to(() => const Homepage());
                         } else if (user != null &&
                             user.emailVerified == false) {
-                          Get.to(() => VerifyEmail());
+                          Get.to(() => const VerifyEmail());
                         }
                       },
                       child: const Text(

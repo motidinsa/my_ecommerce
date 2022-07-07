@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:my_ecommerce/authentication/authentication.dart';
 import 'package:my_ecommerce/signup/ui/verify_email.dart';
 
@@ -71,7 +70,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextField(
                     keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.person_outline_rounded),
                       labelText: 'First Name',
@@ -83,7 +82,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextField(
                     keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.person_outline_rounded),
                       labelText: 'Last Name',
@@ -95,7 +94,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email_outlined),
                       labelText: 'Email',
@@ -107,7 +106,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextField(
                     keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.phone_outlined),
                       labelText: 'Phone (Optional)',
@@ -176,7 +175,7 @@ class _SignUpState extends State<SignUp> {
                         User? user =
                             await Authentication.signUp(email, password);
                         if (user != null) {
-                          Get.to(() => VerifyEmail());
+                          Get.to(() => const VerifyEmail());
                         }
                       },
                       child: const Text(

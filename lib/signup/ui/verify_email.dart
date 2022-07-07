@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class VerifyEmail extends StatefulWidget {
   const VerifyEmail({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
     user = auth.currentUser;
     user!.sendEmailVerification();
 
-    timer = Timer.periodic(Duration(seconds: 2), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 2), (timer) {
       checkEmailVerified();
     });
     super.initState();
@@ -46,21 +46,21 @@ class _VerifyEmailState extends State<VerifyEmail> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 10),
               child: IconButton(
-                icon:
-                    Icon(Icons.arrow_back, size: 30, color: Color(0xff5956E9)),
+                icon: const Icon(Icons.arrow_back,
+                    size: 30, color: Color(0xff5956E9)),
                 onPressed: () {
                   Get.back();
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            Center(
+            const Center(
               child: FaIcon(FontAwesomeIcons.envelope,
                   color: Color(0xff5956E9), size: 100),
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Padding(
@@ -81,20 +81,20 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       Text(
                         'An email containing a verification link has been sent to ${user!.email}. please verify',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Divider(
                           height: 20,
                           color: Colors.grey,
                         ),
                       ),
                       Row(
-                        children: [
+                        children: const [
                           Icon(
                             Icons.arrow_forward_rounded,
                             color: Colors.white,
@@ -114,15 +114,15 @@ class _VerifyEmailState extends State<VerifyEmail> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Divider(
                           height: 20,
                           color: Colors.grey,
                         ),
                       ),
                       Row(
-                        children: [
+                        children: const [
                           Icon(
                             Icons.arrow_forward_rounded,
                             color: Colors.white,
@@ -158,6 +158,12 @@ class _VerifyEmailState extends State<VerifyEmail> {
     await user!.reload();
     if (user!.emailVerified) {
       timer.cancel();
+      // final CollectionReference collection =
+      // FirebaseFirestore.instance.collection('users');
+      await FirebaseFirestore.instance.collection('users').add({
+        'name': 'yoyo',
+        'age': 23,
+      });
       // Navigator.of(context).pushReplacement(
       //     MaterialPageRoute(builder: (context) => HomePage()));
     }
