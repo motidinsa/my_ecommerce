@@ -26,11 +26,13 @@ class CategorySingle extends StatelessWidget {
                 child: Image.asset('assets/images/cpu.png',
                     fit: BoxFit.fitHeight)),
             Expanded(
-                child: Center(
-                    child: Text(
-              'cat name',
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
-            ))),
+              child: Center(
+                child: Text(
+                  'cat name',
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                ),
+              ),
+            ),
           ],
         ),
       ),

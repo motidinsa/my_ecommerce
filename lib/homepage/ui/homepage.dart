@@ -1,6 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_ecommerce/homepage/ui/item_single.dart';
 import 'package:my_ecommerce/homepage/ui/suggestion.dart';
 
 import 'category_single.dart';
@@ -83,52 +84,64 @@ class Homepage extends StatelessWidget {
         ),
         // SizedBox(height: 5,),
         Expanded(
-            child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 25, top: 5, bottom: 5),
-              child: Text(
-                'Featured',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade800),
+          child: ListView(
+            children: [
+              Suggestion(),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 5, bottom: 5),
+                child: Text(
+                  'Categories',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade800),
+                ),
               ),
-            ),
-            Suggestion(),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, top: 5, bottom: 5),
-              child: Text(
-                'Categories',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade800),
+              GridView(
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: .8,
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 3,
+                  mainAxisSpacing: 3,
+                ),
+                children: [
+                  CategorySingle(),
+                  CategorySingle(),
+                  CategorySingle(),
+                  CategorySingle(),
+                  CategorySingle(),
+                  CategorySingle(),
+                ],
               ),
-            ),
-            GridView(
-              shrinkWrap: true,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: .8,
-                crossAxisCount: 3,
-                crossAxisSpacing: 3,
-                mainAxisSpacing: 3,
+              Center(
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'More',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  style: TextButton.styleFrom(
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                ),
               ),
-              children: [
-                CategorySingle(),
-                CategorySingle(),
-                CategorySingle(),
-                CategorySingle(),
-                CategorySingle(),
-                CategorySingle(),
-                CategorySingle(),
-                CategorySingle(),
-              ],
-            )
-          ],
-        ))
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 5, bottom: 5),
+                child: Text(
+                  'Featured',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade800),
+                ),
+              ),
+              ItemSingle(),
+              ItemSingle(),
+            ],
+          ),
+        )
       ],
     );
   }
