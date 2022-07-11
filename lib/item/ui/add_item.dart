@@ -312,9 +312,15 @@ class _ItemAddState extends State<ItemAdd> {
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                                shape: SmoothRectangleBorder(
+                                  borderRadius: SmoothBorderRadius(
+                                    cornerRadius: 10,
+                                    cornerSmoothing: 1,
+                                  ),
+                                ),
                                 primary: const Color(0xff5956E9),
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 15)),
+                                const EdgeInsets.symmetric(vertical: 15)),
                             onPressed: () async {
                               // User? user =
                               // await Authentication.signUp(email, password);
