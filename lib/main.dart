@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:my_ecommerce/homepage/ui/homepage.dart';
+import 'package:my_ecommerce/item/ui/add_item.dart';
 import 'package:my_ecommerce/packages/salomon_bottom_bar.dart';
 
 import 'firebase_options.dart';
@@ -196,7 +199,9 @@ class _MyAppState extends State<MyApp> {
             SalomonBottomBarItem(
                 icon: FloatingActionButton(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => ItemAdd());
+                    },
                     child: const Icon(Icons.add)),
                 title: const Text('Add Item'),
                 hasPadding: false),

@@ -19,21 +19,24 @@ class CategorySingle extends StatelessWidget {
           cornerSmoothing: 1,
         ),
         onTap: () {},
-        child: Column(
-          children: [
-            SizedBox(
-                height: 100,
-                child: Image.asset('assets/images/cpu.png',
-                    fit: BoxFit.fitHeight)),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'cat name',
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Column(
+            children: [
+              SizedBox(
+                  height: 100,
+                  child: Image.asset('assets/images/cpu.png',
+                      fit: BoxFit.fitHeight)),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'cat name',
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
