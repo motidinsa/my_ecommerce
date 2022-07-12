@@ -1,8 +1,12 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:my_ecommerce/item/ui/category_select.dart';
+
+import 'image_select_option.dart';
 
 class ItemAdd extends StatefulWidget {
   const ItemAdd({Key? key}) : super(key: key);
@@ -116,7 +120,7 @@ class _ItemAddState extends State<ItemAdd> {
                             //         : ctx.selectedCategoryName
                             //         .join(' / ')),
                             onTap: () {
-                              // Get.to(() => CategoryListPage());
+                              Get.to(() => CategorySelect());
                               // addItemController.getMockCategory();
                               // Navigator.pushNamed(
                               //     context, "/select_category");
@@ -210,102 +214,71 @@ class _ItemAddState extends State<ItemAdd> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          StaggeredGrid.count(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 4,
+                            crossAxisSpacing: 4,
+                            children: [
+                              StaggeredGridTile.count(
+                                crossAxisCellCount: 2,
+                                mainAxisCellCount: 2,
+                                child: Container(
+                                  decoration: ShapeDecoration(
+                                    shape: SmoothRectangleBorder(
+                                      borderRadius: SmoothBorderRadius(
+                                        cornerRadius: 10,
+                                        cornerSmoothing: 1,
+                                      ),
+                                    ),
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                              StaggeredGridTile.count(
+                                crossAxisCellCount: 2,
+                                mainAxisCellCount: 1,
+                                child: Container(
+                                  // height: 100,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              StaggeredGridTile.count(
+                                crossAxisCellCount: 2,
+                                mainAxisCellCount: 1,
+                                child: Container(
+                                  // height: 100,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              // StaggeredGridTile.count(
+                              //   crossAxisCellCount: 1,
+                              //   mainAxisCellCount: 1,
+                              //   child: Container(height: 100,color: Colors.green,),
+                              // ),
+                            ],
+                          ),
                           Center(
                             child: TextButton(
                               child: Text('Add image'),
                               onPressed: () {
                                 showModalBottomSheet(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                    ),
-                                  ),
-                                  context: context,
-                                  builder: (context) => SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height / 4,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          InkWell(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(10),
-                                            ),
-                                            onTap: () {
-                                              // _openImagePicker(
-                                              //     'camera');
-                                              // Navigator.pop(
-                                              //     context);
-                                            },
-                                            child: Container(
-                                                padding: EdgeInsets.all(20),
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey),
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                    Radius.circular(10),
-                                                  ),
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Text(
-                                                      'Add from camera',
-                                                    ),
-                                                    SizedBox(
-                                                      height: 10,
-                                                    ),
-                                                    Icon(
-                                                      Icons.add_a_photo,
-                                                      size: 30,
-                                                    )
-                                                  ],
-                                                )),
-                                          ),
-                                          InkWell(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(10),
-                                            ),
-                                            onTap: () {
-                                              // _openImagePicker(
-                                              //     'gallery');
-                                              // Navigator.pop(
-                                              //     context);
-                                            },
-                                            child: Container(
-                                              padding: EdgeInsets.all(20),
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey),
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(10))),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text('Add from gallery'),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Icon(
-                                                    Icons.camera,
-                                                    size: 30,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          )
-                                        ],
+                                  shape: const SmoothRectangleBorder(
+                                    borderRadius: SmoothBorderRadius.only(
+                                      topLeft: SmoothRadius(
+                                        cornerRadius: 15,
+                                        cornerSmoothing: 1,
+                                      ),
+                                      topRight: SmoothRadius(
+                                        cornerRadius: 15,
+                                        cornerSmoothing: 1,
                                       ),
                                     ),
                                   ),
+                                  context: context,
+                                  builder: (context) => ImageSelectOption(),
                                 );
                               },
                             ),
@@ -320,7 +293,7 @@ class _ItemAddState extends State<ItemAdd> {
                                 ),
                                 primary: const Color(0xff5956E9),
                                 padding:
-                                const EdgeInsets.symmetric(vertical: 15)),
+                                    const EdgeInsets.symmetric(vertical: 15)),
                             onPressed: () async {
                               // User? user =
                               // await Authentication.signUp(email, password);
