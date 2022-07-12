@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:my_ecommerce/item/ui/single_category_select.dart';
 
-class CategorySelect extends StatelessWidget {
-  const CategorySelect({Key? key}) : super(key: key);
+class SubcategorySelect extends StatelessWidget {
+  const SubcategorySelect({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CategorySelect extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 20),
                       child: Text(
-                        'Categories',
+                        'Sub Categories',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
@@ -44,10 +44,52 @@ class CategorySelect extends StatelessWidget {
                 ],
               ),
             ),
+            CategorySelectSingle(
+              subcategoryFrequency: 3,
+              hasSubcategory: false,
+              isOnSubcategoryPage: true,
+            ),
+            // SizedBox(height: 5,),
             Expanded(
               child: ListView(
                 shrinkWrap: true,
                 children: [
+                  CategorySelectSingle(
+                    hasSubcategory: false,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
+                  CategorySelectSingle(
+                    hasSubcategory: true,
+                  ),
                   CategorySelectSingle(
                     hasSubcategory: true,
                   ),
